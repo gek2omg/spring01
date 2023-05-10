@@ -5,7 +5,7 @@
     <title>Form</title>
 </head>
 <body>
-<form id="frmGateway" name="frmGateway" method="POST" th:object="${gatewayFormDto}">
+<form id="frmGateway" name="frmGateway" method="POST" th:object="${gatewaySaveDto}">
     <input type="text" name="ipaddress" th:field="*{ipaddress}"/>
     <input type="text" name="port" th:field="*{port}"/>
     <button type="submit">저장</button>

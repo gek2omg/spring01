@@ -1,16 +1,17 @@
-package com.example.spring01.Gateway.dto;
+package com.example.spring01.gateway.dto;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 
 @Data
 public class GatewaySaveDto {
-    @NotEmpty(message = "IP주소는 필수 입력입니다.")
+    @NotEmpty(message = "IP 주소는 필수 입력입니다.")
     private String ipaddress;
-    @NotNull(message = "포트번호는 필수 입력입니다.")
+    @NotNull(message = "포트 번호는 필수 입력입니다.")
+    @Min(value = 502, message = "502 부터 507 까지만 입력하세요.")
+    @Max(value = 507, message = "502 부터 507 까지만 입력하세요.")
     private Integer port;
     private LocalDateTime regdate;
 

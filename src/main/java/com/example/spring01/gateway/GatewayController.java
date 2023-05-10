@@ -1,10 +1,8 @@
-package com.example.spring01.Gateway;
+package com.example.spring01.gateway;
 
-import com.example.spring01.Gateway.dto.GatewayFormDto;
-import com.example.spring01.Gateway.dto.GatewayListDto;
-import com.example.spring01.Gateway.dto.GatewaySaveDto;
-import com.example.spring01.Gateway.dto.GatewaySearchCondition;
-import com.example.spring01.Gateway.entity.Gateway;
+import com.example.spring01.gateway.dto.GatewayListDto;
+import com.example.spring01.gateway.dto.GatewaySaveDto;
+import com.example.spring01.gateway.dto.GatewaySearchCondition;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,9 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -69,9 +65,9 @@ public class GatewayController {
 
 
     @GetMapping("/gateway/form")
-    public String gatewayForm(GatewayFormDto gatewayFormDto, Model model) {
+    public String gatewayForm(GatewaySaveDto gatewaySaveDto, Model model) {
 
-        model.addAttribute("gatewayFormDto", gatewayFormDto);
+        model.addAttribute("gatewaySaveDto", gatewaySaveDto);
 
         return "gateway/gatewayForm";
     }

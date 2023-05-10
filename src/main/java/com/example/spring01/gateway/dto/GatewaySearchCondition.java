@@ -1,4 +1,4 @@
-package com.example.spring01.Gateway.dto;
+package com.example.spring01.gateway.dto;
 
 import lombok.Data;
 

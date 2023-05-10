@@ -1,10 +1,9 @@
-package com.example.spring01.Gateway;
+package com.example.spring01.gateway;
 
-import com.example.spring01.Gateway.dto.GatewayFormDto;
-import com.example.spring01.Gateway.dto.GatewayListDto;
-import com.example.spring01.Gateway.dto.GatewaySaveDto;
-import com.example.spring01.Gateway.dto.GatewaySearchCondition;
-import com.example.spring01.Gateway.entity.Gateway;
+import com.example.spring01.gateway.dto.GatewayListDto;
+import com.example.spring01.gateway.dto.GatewaySaveDto;
+import com.example.spring01.gateway.dto.GatewaySearchCondition;
+import com.example.spring01.gateway.entity.Gateway;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

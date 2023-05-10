@@ -1,8 +1,8 @@
-package com.example.spring01.Gateway;
+package com.example.spring01.gateway;
 
-import com.example.spring01.Gateway.dto.GatewayListDto;
-import com.example.spring01.Gateway.dto.GatewaySearchCondition;
-import com.example.spring01.Gateway.dto.QGatewayListDto;
+import com.example.spring01.gateway.dto.GatewayListDto;
+import com.example.spring01.gateway.dto.GatewaySearchCondition;
+import com.example.spring01.gateway.dto.QGatewayListDto;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -14,7 +14,7 @@ import javax.persistence.EntityManager;
 
 import java.util.List;
 
-import static com.example.spring01.Gateway.entity.QGateway.*;
+import static com.example.spring01.gateway.entity.QGateway.*;
 import static com.querydsl.core.types.ExpressionUtils.count;
 import static org.springframework.util.StringUtils.hasText;
 

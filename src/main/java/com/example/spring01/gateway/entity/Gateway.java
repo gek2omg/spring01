@@ -1,7 +1,5 @@
-package com.example.spring01.Gateway.entity;
+package com.example.spring01.gateway.entity;
 
-import com.querydsl.core.annotations.QueryProjection;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
