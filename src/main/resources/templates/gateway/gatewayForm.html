@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<body>
+<form id="frmGateway" name="frmGateway" method="POST" th:object="${gatewayFormDto}">
+    <input type="text" name="ipaddress" th:field="*{ipaddress}"/>
+    <input type="text" name="port" th:field="*{port}"/>
+    <button type="submit">저장</button>
+</form>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    // JSON 형식으로 에러 메시지 출력
+    var errors = /*[[${errors} ? ${errors} : '{}']]*/ {};
+
+    // 페이지 로드 시 실행될 함수
+    window.onload = function() {
+        // 에러 메시지가 있는 경우 알림 표시
+        if (Object.keys(errors).length > 0 && errors !== '{}') {
+            var errorMessage = '';
+            for (var key in errors) {
+                errorMessage += errors[key];
+            }
+            alert(errorMessage);
+            document.querySelector("input[name='"+key+"']").focus();
+        }
+    };
+    /*]]>*/
+</script>
+</body>
+</html>

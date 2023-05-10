@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagination</title>
+</head>
+<body>
+
+<div th:fragment="pagination (pageVars)">
+    <div th:with="
+            urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()},
+            startPage=${(pageVars.number / pageRange) * pageRange + 1},
+            endPage=(${(pageVars.totalPages == 0) ? 1 : (startPage + (pageRange - 1) < pageVars.totalPages ? startPage + (pageRange - 1) : pageVars.totalPages)})
+        ">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" th:classappend="${startPage < 10}?'disabled'">
+                    <a th:href="${#uris.unescapeQueryParam(urlBuilder.replaceQueryParam('page', 0).toUriString())}" class="page-link">
+                        <span aria-hidden='true'>First</span>
+                    </a>
+                </li>
+
+                <li class="page-item" th:classappend="${pageVars.first}?'disabled'">
+                    <a th:href="${#uris.unescapeQueryParam(urlBuilder.replaceQueryParam('page', pageVars.number - 1).toUriString())}" class="page-link">
+                        <span aria-hidden='true'>Prev</span>
+                    </a>
+                </li>
+
+                <li class="page-item" th:each="page: ${#numbers.sequence(startPage, endPage)}" th:classappend="${pageVars.number eq page - 1}?'active':''">
+                    <a th:href="${#uris.unescapeQueryParam(urlBuilder.replaceQueryParam('page', page - 1).toUriString())}" th:text="${page}" class="page-link">1•2•3•4•5•6•7•8•9•10</a>
+                </li>
+
+                <li class="page-item" th:classappend="${pageVars.last}?'disabled'">
+                    <a th:href="${#uris.unescapeQueryParam(urlBuilder.replaceQueryParam('page', pageVars.number + 1).toUriString())}" class="page-link">
+                        <span aria-hidden='true'>Next</span>
+                    </a>
+                </li>
+
+                <li class="page-item" th:classappend="${startPage+pageRange > pageVars.totalPages - 1}?'disabled'">
+                    <a th:href="${#uris.unescapeQueryParam(urlBuilder.replaceQueryParam('page', pageVars.totalPages - 1).toUriString())}" class="page-link">Last</a>
+                </li>
+            </ul>
+    </div>
+</div>
+
+</body>
+</html>
