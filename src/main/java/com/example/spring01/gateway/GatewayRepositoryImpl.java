@@ -43,6 +43,7 @@ public class GatewayRepositoryImpl implements GatewayRepositoryCustom {
                 .where(
                         searchFindAllPredicateV1(condition)
                 )
+                .orderBy(gateway.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();

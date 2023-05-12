@@ -46,7 +46,7 @@ public class GatewayController {
         }
 
         PageRequest pageable = PageRequest.of(pageNumber, pageSize);
-        Page<GatewayListDto> lists = gatewayService.searchFindAllV3(condition, pageable);
+        Page<GatewayListDto> lists = gatewayService.searchFindAllV1(condition, pageable);
 
         // 게시물 카운터
         long TotalElements = lists.getTotalElements();
@@ -99,7 +99,7 @@ public class GatewayController {
         }
 
 
-        gatewayService.saveGatewayV2(gatewaySaveDto);
+        gatewayService.saveGatewayV1(gatewaySaveDto);
 
         return "redirect:/gateway/list";
     }
