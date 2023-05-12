@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -37,6 +38,19 @@ public class GatewayService {
         gateway.setIpaddress(gatewaySaveDto.getIpaddress());
         gateway.setPort(gatewaySaveDto.getPort());
         gateway.setRegdate(gatewaySaveDto.getRegdate());
+
+        gatewayRepository.save(gateway);
+    }
+
+
+    @Transactional
+    public void saveGatewayV2(GatewaySaveDto gatewaySaveDto) {
+
+        Gateway gateway = Gateway.builder()
+                .ipaddress(gatewaySaveDto.getIpaddress())
+                .port(gatewaySaveDto.getPort())
+                .regdate(LocalDateTime.now())
+                .build();
 
         gatewayRepository.save(gateway);
     }

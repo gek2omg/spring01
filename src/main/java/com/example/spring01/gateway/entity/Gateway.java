@@ -1,5 +1,6 @@
 package com.example.spring01.gateway.entity;
 
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Builder
 @RequiredArgsConstructor
 @Table(name = "tb_gateway")
 public class Gateway {
@@ -56,4 +58,5 @@ public class Gateway {
         this.port = port;
         this.regdate = regdate;
     }
+
 }

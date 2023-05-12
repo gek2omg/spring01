@@ -99,7 +99,7 @@ public class GatewayController {
         }
 
 
-        gatewayService.saveGatewayV1(gatewaySaveDto);
+        gatewayService.saveGatewayV2(gatewaySaveDto);
 
         return "redirect:/gateway/list";
     }
