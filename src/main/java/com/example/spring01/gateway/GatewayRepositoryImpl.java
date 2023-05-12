@@ -5,6 +5,7 @@ import com.example.spring01.gateway.dto.GatewaySearchCondition;
 import com.example.spring01.gateway.dto.QGatewayListDto;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -56,6 +57,102 @@ public class GatewayRepositoryImpl implements GatewayRepositoryCustom {
 
 
         return new PageImpl<>(content, pageable, total);
+    }
+
+
+    @Override
+    public Page<GatewayListDto> searchFindAllV2(GatewaySearchCondition condition, Pageable pageable) {
+        /**
+         * GatewayListDto, 기본 생성자가 있어야 함.
+         * 필드 위치가 맞지 않거나, 필드가 빠져도 됨
+         */
+        List<GatewayListDto> content = queryFactory
+                .select(Projections.bean(GatewayListDto.class,
+                        gateway.id,
+                        gateway.ipaddress,
+                        gateway.port,
+                        gateway.regdate))
+                .from(gateway)
+                .where(
+                        searchFindAllPredicateV1(condition)
+                )
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        long total = queryFactory
+                .select(count(gateway.id))
+                .from(gateway)
+                .where(
+                        searchFindAllPredicateV1(condition)
+                )
+                .fetch().get(0);
+
+
+        return new PageImpl<>(content, pageable, total);
+
+    }
+
+
+    @Override
+    public Page<GatewayListDto> searchFindAllV3(GatewaySearchCondition condition, Pageable pageable) {
+
+        List<GatewayListDto> content = queryFactory
+                .select(Projections.fields(GatewayListDto.class,
+                        gateway.id,
+                        gateway.ipaddress,
+                        gateway.port,
+                        gateway.regdate))
+                .from(gateway)
+                .where(
+                        searchFindAllPredicateV1(condition)
+                )
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        long total = queryFactory
+                .select(count(gateway.id))
+                .from(gateway)
+                .where(
+                        searchFindAllPredicateV1(condition)
+                )
+                .fetch().get(0);
+
+
+        return new PageImpl<>(content, pageable, total);
+
+    }
+
+
+    @Override
+    public Page<GatewayListDto> searchFindAllV4(GatewaySearchCondition condition, Pageable pageable) {
+
+        List<GatewayListDto> content = queryFactory
+                .select(Projections.constructor(GatewayListDto.class,
+                        gateway.id,
+                        gateway.ipaddress,
+                        gateway.port,
+                        gateway.regdate))
+                .from(gateway)
+                .where(
+                        searchFindAllPredicateV1(condition)
+                )
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        long total = queryFactory
+                .select(count(gateway.id))
+                .from(gateway)
+                .where(
+                        searchFindAllPredicateV1(condition)
+                )
+                .fetch().get(0);
+
+
+        return new PageImpl<>(content, pageable, total);
+
     }
 
 

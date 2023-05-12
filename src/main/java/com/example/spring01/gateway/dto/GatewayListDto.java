@@ -12,6 +12,9 @@ public class GatewayListDto {
     private Integer port;
     private LocalDateTime regdate;
 
+    public GatewayListDto() {
+    }
+
     @QueryProjection
     public GatewayListDto(Long id, String ipaddress, Integer port, LocalDateTime regdate) {
         this.id = id;

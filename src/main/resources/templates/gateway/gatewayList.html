@@ -19,16 +19,18 @@
     <input type="text" name="ipaddress" th:field="*{port}" />
     <button type="submit">검색</button>
 </form>
-<table>
+<table border="1">
     <tr>
         <th>ID</th>
         <th>ipAddress</th>
         <th>Port</th>
+        <th>Regdate</th>
     </tr>
     <tr th:each="list : ${lists}">
         <td th:text="${list.id}">ID</td>
         <td th:text="${list.ipaddress}">ipAddress</td>
         <td th:text="${list.port}">Port</td>
+        <td th:text="${list.regdate}">Regdate</td>
     </tr>
 </table>
 <div th:include="~{common/pagination :: pagination (${lists})}"></div>

@@ -45,4 +45,19 @@ public class GatewayService {
 
         return gatewayRepository.searchFindAllV1(condition, pageable);
     }
+
+    public Page<GatewayListDto> searchFindAllV2(GatewaySearchCondition condition, Pageable pageable) {
+
+        return gatewayRepository.searchFindAllV2(condition, pageable);
+    }
+
+    public Page<GatewayListDto> searchFindAllV3(GatewaySearchCondition condition, Pageable pageable) {
+
+        return gatewayRepository.searchFindAllV3(condition, pageable);
+    }
+
+    public Page<GatewayListDto> searchFindAllV4(GatewaySearchCondition condition, Pageable pageable) {
+
+        return gatewayRepository.searchFindAllV4(condition, pageable);
+    }
 }
