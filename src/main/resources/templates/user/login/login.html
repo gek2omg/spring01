@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>로그인</title>
+</head>
+<body id="body" class="">
+<div id="wrap">
+  <section>
+    <div class="login_bg"></div>
+    <div class="login_box">
+      <div class="logo">
+        <h1>
+          <img src="/admin/images/common/logo.png" alt="">
+        </h1>
+      </div>
+      <div>
+        <p>윌앤비전 관리자 페이지입니다. <br>로그인 하시려면 아이디와 비밀번호를 입력해주세요</p>
+        <form id="frmLogin" name="fromLogin" method="POST" action="/login">
+          <fieldset>
+            <legend>아이디, 비밀번호</legend>
+            <div>
+              <input type="text"  name="userId" title="아이디 입력" placeholder="ID" required>
+            </div>
+            <p style="display: none" class="error_txt" id="error_text">로그인하시려면 아이디와 비밀번호를 입력해주세요</p>
+            <div>
+              <input type="password" name="password" title="비밀번호 입력" placeholder="비밀번호" required>
+            </div>
+            <button type="submit">로그인</button>
+            <p>* 아이디 및 비밀번호 분실 시 000-0000-0000로 문의주시기 바랍니다. </p>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+  
+</script>
+</body>
+</html>
