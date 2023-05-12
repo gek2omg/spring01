@@ -158,7 +158,8 @@ public class GatewayRepositoryImpl implements GatewayRepositoryCustom {
 
     private BooleanBuilder searchFindAllPredicateV1(GatewaySearchCondition condition) {
         return new BooleanBuilder()
-                .and(condIpaddress(condition.getIpaddress()));
+                .and(condIpaddress(condition.getIpaddress()))
+                .and(condPort(condition.getPort()));
 
 
     }
@@ -169,6 +170,17 @@ public class GatewayRepositoryImpl implements GatewayRepositoryCustom {
 
         if(hasText(ipaddress)) {
             builder.and(gateway.ipaddress.like("%"+ipaddress+"%"));
+        }
+
+        return builder;
+
+    }
+
+    private Predicate condPort(Integer port) {
+        BooleanBuilder builder = new BooleanBuilder();
+
+        if(port != null && hasText(String.valueOf(port))) {
+            builder.and(gateway.port.like("%"+port+"%"));
         }
 
         return builder;
